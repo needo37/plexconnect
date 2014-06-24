@@ -17,9 +17,6 @@ RUN wget https://github.com/iBaa/PlexConnect/tarball/d67cf62c16114ba744216449e95
 RUN tar -C /opt/plexconnect -xvf /tmp/iBaa-PlexConnect-d67cf62c16.tar.gz --strip-components 1
 RUN chown nobody:users /opt/plexconnect
 
-# Generate SSL certificates if they don't exist
-ADD sslgen.sh /sslgen.sh
-
 EXPOSE 80
 
 # PlexConnect must be ran as root
