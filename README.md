@@ -19,3 +19,9 @@ RETURNING USERS
 ---
 
 Put your SSL certificates in /path/to/plexconnect/ssl if they do not exist the docker will generate them for you.
+
+Edge
+----
+If you would like to run the latest updates from the master branch run:
+
+docker run -d --host="name" --name="plexconnect" -v /path/to/plexconnect/ssl:/opt/plexconnect/assets/certificates/ -v /etc/localtime:/etc/localtime:ro -e EDGE=1 -p 80:80 needo/plexconnect

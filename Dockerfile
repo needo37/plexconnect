@@ -1,6 +1,12 @@
-FROM debian:jessie
+FROM phusion/baseimage:0.9.11
 MAINTAINER needo <needo@superhero.org>
 ENV DEBIAN_FRONTEND noninteractive
+
+# Set correct environment variables
+ENV HOME /root
+
+# Use baseimage-docker's init system
+CMD ["/sbin/my_init"]
 
 # Fix a Debianism of the nobody's uid being 65534
 RUN usermod -u 99 nobody
@@ -19,6 +25,12 @@ RUN chown nobody:users /opt/plexconnect
 
 EXPOSE 80
 
-# PlexConnect must be ran as root
-ADD start.sh /start.sh
-CMD ["/bin/bash", "/start.sh"]
+# Add edge.sh to execute during container startup
+RUN mkdir -p /etc/my_init.d
+ADD edge.sh /etc/my_init.d/edge.sh
+RUN chmod +x /etc/my_init.d/edge.sh
+
+# Add PlexConnect to runit
+RUN mkdir /etc/service/plexconnect
+ADD plexconnect.sh /etc/service/plexconnect/run
+RUN chmod +x /etc/service/plexconnect/run
