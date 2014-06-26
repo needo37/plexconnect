@@ -5,8 +5,10 @@ if [ -z "$EDGE" ]; then
   echo "Bleeding edge not requested"
 else
   apt-get install -qy git
+  mv /opt/plexconnect/assets/certificates/trailers* /tmp/
   rm -rf /opt/plexconnect
   git clone https://github.com/iBaa/PlexConnect.git /opt/plexconnect
+  mv /tmp/trailers* /opt/plexconnect/assets/certificates/
 fi
 
 # Generate SSL certificates if they don't exist
