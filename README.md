@@ -3,7 +3,7 @@ This is a Dockerfile setup for PlexConnect - https://github.com/iBaa/PlexConnect
 To run:
 
 ```
-docker run -d --host="name" --name="plexconnect" -v /path/to/plexconnect/ssl:/opt/plexconnect/assets/certificates/ -v /etc/localtime:/etc/localtime:ro -p 80:80 needo/plexconnect
+docker run -d --host="name" --name="plexconnect" -v /path/to/plexconnect/ssl:/opt/plexconnect/assets/certificates:rw -v /etc/localtime:/etc/localtime:ro -p 80:80 needo/plexconnect
 ```
 
 FIRST TIME USERS
@@ -26,4 +26,4 @@ Edge
 ----
 If you would like to run the latest updates from the master branch run:
 
-docker run -d --host="name" --name="plexconnect" -v /path/to/plexconnect/ssl:/opt/plexconnect/assets/certificates/ -v /etc/localtime:/etc/localtime:ro -e EDGE=1 -p 80:80 needo/plexconnect
+docker run -d --host="name" --name="plexconnect" -v /path/to/plexconnect/ssl:/opt/plexconnect/assets/certificates:rw -v /etc/localtime:/etc/localtime:ro -e EDGE=1 -p 80:80 needo/plexconnect

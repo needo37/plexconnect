@@ -17,10 +17,10 @@ RUN apt-get update -q
 # Install Dependencies
 RUN apt-get install -qy python wget
 
-# Install PlexConnect 2014-06-05
+# Install PlexConnect v0.4
 RUN mkdir /opt/plexconnect
-RUN wget https://github.com/iBaa/PlexConnect/tarball/d67cf62c16114ba744216449e95378189aad1629 -O /tmp/iBaa-PlexConnect-d67cf62c16.tar.gz
-RUN tar -C /opt/plexconnect -xvf /tmp/iBaa-PlexConnect-d67cf62c16.tar.gz --strip-components 1
+RUN wget https://github.com/iBaa/PlexConnect/archive/v0.4.tar.gz
+RUN tar -C /opt/plexconnect -xvf /tmp/v0.4.tar.gz --strip-components 1
 RUN chown nobody:users /opt/plexconnect
 
 EXPOSE 80
